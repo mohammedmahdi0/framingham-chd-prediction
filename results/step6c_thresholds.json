@@ -1,0 +1,87 @@
+{
+  "Logistic Regression": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8548672566371681,
+    "oof_acc_at_best": 0.855653883972468
+  },
+  "LDA": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8552605703048181,
+    "oof_acc_at_best": 0.8552605703048181
+  },
+  "QDA": {
+    "threshold": 0.68,
+    "oof_acc_at_050": 0.8487708947885939,
+    "oof_acc_at_best": 0.8537856440511308
+  },
+  "Naive Bayes": {
+    "threshold": 0.39,
+    "oof_acc_at_050": 0.8492625368731564,
+    "oof_acc_at_best": 0.8515240904621435
+  },
+  "KNN": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8516224188790561,
+    "oof_acc_at_best": 0.8516224188790561
+  },
+  "Decision Tree": {
+    "threshold": 0.64,
+    "oof_acc_at_050": 0.8461160275319567,
+    "oof_acc_at_best": 0.8482792527040314
+  },
+  "Random Forest": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8523107177974435,
+    "oof_acc_at_best": 0.8532940019665683
+  },
+  "Extra Trees": {
+    "threshold": 0.43,
+    "oof_acc_at_050": 0.8519174041297936,
+    "oof_acc_at_best": 0.8542772861356932
+  },
+  "AdaBoost": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8509341199606686,
+    "oof_acc_at_best": 0.8512291052114062
+  },
+  "Gradient Boosting": {
+    "threshold": 0.58,
+    "oof_acc_at_050": 0.8492625368731564,
+    "oof_acc_at_best": 0.8508357915437562
+  },
+  "Hist Gradient Boosting": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8518190757128811,
+    "oof_acc_at_best": 0.8527040314650934
+  },
+  "XGBoost": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8514257620452311,
+    "oof_acc_at_best": 0.8514257620452311
+  },
+  "LightGBM": {
+    "threshold": 0.56,
+    "oof_acc_at_050": 0.8512291052114062,
+    "oof_acc_at_best": 0.8525073746312685
+  },
+  "CatBoost": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8525073746312685,
+    "oof_acc_at_best": 0.8532940019665683
+  },
+  "SVM (linear)": {
+    "threshold": 0.5,
+    "oof_acc_at_050": 0.8485742379547689,
+    "oof_acc_at_best": 0.8486725663716813
+  },
+  "SVM (RBF)": {
+    "threshold": 0.37,
+    "oof_acc_at_050": 0.8515240904621436,
+    "oof_acc_at_best": 0.8528023598820059
+  },
+  "Neural Network (MLP)": {
+    "threshold": 0.56,
+    "oof_acc_at_050": 0.8525073746312684,
+    "oof_acc_at_best": 0.8544739429695182
+  }
+}

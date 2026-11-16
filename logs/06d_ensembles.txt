@@ -1,0 +1,53 @@
+
+====================================================================================================
+STEP 6d - ENSEMBLES
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+
+--- Tuned models, ranked
+                        CV accuracy
+Logistic Regression          0.8547
+LDA                          0.8541
+SVM (RBF)                    0.8534
+Neural Network (MLP)         0.8525
+CatBoost                     0.8523
+Random Forest                0.8520
+Extra Trees                  0.8514
+AdaBoost                     0.8507
+Hist Gradient Boosting       0.8503
+LightGBM                     0.8502
+XGBoost                      0.8500
+KNN                          0.8498
+Gradient Boosting            0.8490
+QDA                          0.8486
+Naive Bayes                  0.8485
+SVM (linear)                 0.8481
+Decision Tree                0.8458
+  Voting (top 3)                   CV acc = 0.8539 +/- 0.0046  AUC = 0.7356  (12s)
+  Voting (top 5)                   CV acc = 0.8546 +/- 0.0050  AUC = 0.7375  (11s)
+  Voting (top 8)                   CV acc = 0.8546 +/- 0.0038  AUC = 0.7358  (18s)
+  Hard voting (top 5)              CV acc = 0.8549 +/- 0.0046  AUC = nan  (10s)
+  Stacking (top 3)                 CV acc = 0.8540 +/- 0.0062  AUC = 0.7351  (24s)
+  Stacking (top 5)                 CV acc = 0.8534 +/- 0.0060  AUC = 0.7372  (26s)
+  Lab 2 stacking (lab settings)    CV acc = 0.8258 +/- 0.0096  AUC = 0.6702  (20s)
+  Lab 2 stacking (tuned models)    CV acc = 0.8292 +/- 0.0055  AUC = 0.6687  (27s)
+  Lab 2 models, LR meta-model      CV acc = 0.8524 +/- 0.0060  AUC = 0.7280  (27s)
+[saved] results/step6d_ensembles.json
+[saved] results/step6d_ensembles.csv
+
+--- Ensembles
+                        Ensemble  CV accuracy  CV acc std  CV AUC  seconds
+0            Hard voting (top 5)       0.8549      0.0046     NaN   9.9561
+1                 Voting (top 8)       0.8546      0.0038  0.7358  18.4694
+2                 Voting (top 5)       0.8546      0.0050  0.7375  10.5945
+3               Stacking (top 3)       0.8540      0.0062  0.7351  23.6227
+4                 Voting (top 3)       0.8539      0.0046  0.7356  11.8615
+5               Stacking (top 5)       0.8534      0.0060  0.7372  26.4823
+6    Lab 2 models, LR meta-model       0.8524      0.0060  0.7280  26.6570
+7  Lab 2 stacking (tuned models)       0.8292      0.0055  0.6687  27.2498
+8  Lab 2 stacking (lab settings)       0.8258      0.0096  0.6702  19.5937
+
+Best single model: Logistic Regression = 0.8547
+Best ensemble    : Hard voting (top 5) = 0.8549  (difference +0.0002)
+[saved] figures/19b_ensembles.png

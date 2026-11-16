@@ -1,0 +1,70 @@
+
+====================================================================================================
+STEP 6a - ALL MODELS, DEFAULT SETTINGS
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+  Logistic Regression      best feature set = aic8     CV acc = 0.8546   AUC = 0.7364
+  LDA                      best feature set = bic5     CV acc = 0.8541   AUC = 0.7325
+  QDA                      best feature set = bic5     CV acc = 0.8422   AUC = 0.7171
+  Naive Bayes              best feature set = bic5     CV acc = 0.8416   AUC = 0.7250
+  KNN                      best feature set = all15    CV acc = 0.8382   AUC = 0.6198
+  Decision Tree            best feature set = lasso10  CV acc = 0.7611   AUC = 0.5639
+  Random Forest            best feature set = all15    CV acc = 0.8484   AUC = 0.7028
+  Extra Trees              best feature set = all15    CV acc = 0.8488   AUC = 0.7018
+  AdaBoost                 best feature set = all15    CV acc = 0.8514   AUC = 0.7113
+  Gradient Boosting        best feature set = lasso10  CV acc = 0.8478   AUC = 0.7126
+  Hist Gradient Boosting   best feature set = all15    CV acc = 0.8423   AUC = 0.6736
+  XGBoost                  best feature set = all15    CV acc = 0.8341   AUC = 0.6572
+  LightGBM                 best feature set = all15    CV acc = 0.8421   AUC = 0.6758
+  CatBoost                 best feature set = lasso10  CV acc = 0.8486   AUC = 0.7158
+  SVM (linear)             best feature set = bic5     CV acc = 0.8481   AUC = 0.5113
+  SVM (RBF)                best feature set = bic5     CV acc = 0.8508   AUC = 0.6003
+  Neural Network (MLP)     best feature set = bic5     CV acc = 0.8538   AUC = 0.7273
+[saved] results/step6a_models_default.csv
+
+--- CV accuracy, default settings (rows = models, columns = feature subsets)
+Feature set             all15  lasso10   aic8   bic5   best
+Model                                                      
+Logistic Regression    0.8545   0.8545 0.8546 0.8546 0.8546
+LDA                    0.8496   0.8506 0.8514 0.8541 0.8541
+Neural Network (MLP)   0.8210   0.8404 0.8480 0.8538 0.8538
+AdaBoost               0.8514   0.8501 0.8504 0.8507 0.8514
+SVM (RBF)              0.8481   0.8498 0.8488 0.8508 0.8508
+Extra Trees            0.8488   0.8439 0.8433 0.8338 0.8488
+CatBoost               0.8474   0.8486 0.8483 0.8476 0.8486
+Random Forest          0.8484   0.8438 0.8447 0.8397 0.8484
+SVM (linear)           0.8473   0.8473 0.8473 0.8481 0.8481
+Gradient Boosting      0.8462   0.8478 0.8478 0.8462 0.8478
+Hist Gradient Boosting 0.8423   0.8409 0.8392 0.8404 0.8423
+QDA                    0.8308   0.8314 0.8380 0.8422 0.8422
+LightGBM               0.8421   0.8400 0.8379 0.8396 0.8421
+Naive Bayes            0.8280   0.8322 0.8384 0.8416 0.8416
+KNN                    0.8382   0.8342 0.8342 0.8356 0.8382
+XGBoost                0.8341   0.8336 0.8340 0.8307 0.8341
+Decision Tree          0.7569   0.7611 0.7602 0.7598 0.7611
+
+--- CV AUC, default settings
+Feature set             all15  lasso10   aic8   bic5
+Model                                               
+Logistic Regression    0.7321   0.7356 0.7364 0.7339
+LDA                    0.7301   0.7335 0.7345 0.7325
+Neural Network (MLP)   0.6229   0.6859 0.6999 0.7273
+AdaBoost               0.7113   0.7131 0.7141 0.7138
+SVM (RBF)              0.6186   0.6101 0.6202 0.6003
+Extra Trees            0.7018   0.6808 0.6896 0.6814
+CatBoost               0.7023   0.7158 0.7168 0.7080
+Random Forest          0.7028   0.6943 0.6946 0.6871
+SVM (linear)           0.5800   0.5518 0.5313 0.5113
+Gradient Boosting      0.7039   0.7126 0.7141 0.7050
+Hist Gradient Boosting 0.6736   0.6811 0.6797 0.6651
+QDA                    0.7189   0.7238 0.7251 0.7171
+LightGBM               0.6758   0.6799 0.6794 0.6665
+Naive Bayes            0.7195   0.7247 0.7299 0.7250
+KNN                    0.6198   0.6330 0.6389 0.6244
+XGBoost                0.6572   0.6679 0.6666 0.6539
+Decision Tree          0.5507   0.5639 0.5626 0.5623
+
+Baseline accuracy (always 'no CHD') = 0.8481
+Models below the baseline with default settings: ['SVM (linear)', 'Gradient Boosting', 'Hist Gradient Boosting', 'QDA', 'LightGBM', 'Naive Bayes', 'KNN', 'XGBoost', 'Decision Tree']
+[saved] figures/17_models_default.png

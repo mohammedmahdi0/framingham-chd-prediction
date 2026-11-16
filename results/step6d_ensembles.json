@@ -1,0 +1,124 @@
+{
+  "Voting (top 3)": {
+    "kind": "voting",
+    "members": [
+      "Logistic Regression",
+      "LDA",
+      "SVM (RBF)"
+    ],
+    "cv_accuracy": 0.8538839724680433,
+    "cv_std": 0.004647513194924869,
+    "cv_auc": 0.7355542422963276
+  },
+  "Voting (top 5)": {
+    "kind": "voting",
+    "members": [
+      "Logistic Regression",
+      "LDA",
+      "SVM (RBF)",
+      "Neural Network (MLP)",
+      "CatBoost"
+    ],
+    "cv_accuracy": 0.8545722713864305,
+    "cv_std": 0.004988653252297295,
+    "cv_auc": 0.7374543407907698
+  },
+  "Voting (top 8)": {
+    "kind": "voting",
+    "members": [
+      "Logistic Regression",
+      "LDA",
+      "SVM (RBF)",
+      "Neural Network (MLP)",
+      "CatBoost",
+      "Random Forest",
+      "Extra Trees",
+      "AdaBoost"
+    ],
+    "cv_accuracy": 0.8545722713864307,
+    "cv_std": 0.0038006190934292464,
+    "cv_auc": 0.7358153932742366
+  },
+  "Hard voting (top 5)": {
+    "kind": "hard_voting",
+    "members": [
+      "Logistic Regression",
+      "LDA",
+      "SVM (RBF)",
+      "Neural Network (MLP)",
+      "CatBoost"
+    ],
+    "cv_accuracy": 0.8548672566371681,
+    "cv_std": 0.004626662873556989,
+    "cv_auc": NaN
+  },
+  "Stacking (top 3)": {
+    "kind": "stacking",
+    "members": [
+      "Logistic Regression",
+      "LDA",
+      "SVM (RBF)"
+    ],
+    "cv_accuracy": 0.8539823008849557,
+    "cv_std": 0.00621105671479008,
+    "cv_auc": 0.7351197411003234
+  },
+  "Stacking (top 5)": {
+    "kind": "stacking",
+    "members": [
+      "Logistic Regression",
+      "LDA",
+      "SVM (RBF)",
+      "Neural Network (MLP)",
+      "CatBoost"
+    ],
+    "cv_accuracy": 0.8533923303834807,
+    "cv_std": 0.00599238898139335,
+    "cv_auc": 0.7371706767975236
+  },
+  "Lab 2 stacking (lab settings)": {
+    "kind": "lecture",
+    "members": [
+      "KNN",
+      "SVM (RBF)",
+      "Decision Tree",
+      "Random Forest",
+      "XGBoost",
+      "Naive Bayes",
+      "Neural Network (MLP)"
+    ],
+    "cv_accuracy": 0.8257620452310717,
+    "cv_std": 0.00964721540720633,
+    "cv_auc": 0.6702484874067821
+  },
+  "Lab 2 stacking (tuned models)": {
+    "kind": "stacking_xgb",
+    "members": [
+      "KNN",
+      "SVM (RBF)",
+      "Decision Tree",
+      "Random Forest",
+      "XGBoost",
+      "Naive Bayes",
+      "Neural Network (MLP)"
+    ],
+    "cv_accuracy": 0.829203539823009,
+    "cv_std": 0.005471161354274742,
+    "cv_auc": 0.6686917123962292
+  },
+  "Lab 2 models, LR meta-model": {
+    "kind": "stacking",
+    "members": [
+      "KNN",
+      "SVM (RBF)",
+      "Decision Tree",
+      "Random Forest",
+      "XGBoost",
+      "Naive Bayes",
+      "Neural Network (MLP)"
+    ],
+    "cv_accuracy": 0.8524090462143561,
+    "cv_std": 0.00600850191443546,
+    "cv_auc": 0.7279774869846631
+  }
+}

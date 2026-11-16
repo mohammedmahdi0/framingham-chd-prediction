@@ -1,0 +1,63 @@
+
+====================================================================================================
+FINAL MODEL - LOGISTIC REGRESSION (ELASTIC NET) ON 10 FEATURES
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+Features used: ['male', 'age', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'glucose']
+
+Cross-validated accuracy (train, 15 folds): 0.8547 +/- 0.0062 | AUC 0.7356
+
+------------------------------------------------------------
+TRAIN accuracy : 0.8572
+TEST  accuracy : 0.8479     <-- the reported result
+Baseline (test): 0.8479     (always predicting 'no CHD')
+Test AUC       : 0.6997
+Precision      : 0.5000
+Recall         : 0.0698
+F1             : 0.1224
+------------------------------------------------------------
+
+Train and test accuracy are close -> no over-fitting.
+
+Classification report (test set):
+              precision    recall  f1-score   support
+
+      No CHD     0.8554    0.9875    0.9167       719
+         CHD     0.5000    0.0698    0.1224       129
+
+    accuracy                         0.8479       848
+   macro avg     0.6777    0.5286    0.5196       848
+weighted avg     0.8014    0.8479    0.7959       848
+
+Confusion matrix (rows = actual, columns = predicted):
+               pred No CHD  pred CHD
+actual No CHD          710         9
+actual CHD             120         9
+
+--- Model coefficients (standardized features)
+                 coefficient  odds ratio (per +1 std)
+age                   0.5722                   1.7722
+sysBP                 0.3115                   1.3654
+cigsPerDay            0.2902                   1.3367
+male                  0.2232                   1.2500
+glucose               0.1619                   1.1758
+totChol               0.0960                   1.1007
+prevalentStroke       0.0813                   1.0847
+prevalentHyp          0.0755                   1.0784
+BPMeds                0.0572                   1.0588
+diabetes              0.0208                   1.0210
+[saved] figures/24_final_model.png
+[saved] results/step7_repeated_holdout.csv
+
+Repeated hold-out: 100 different random 80/20 splits
+   model accuracy    : mean 0.8544 | std 0.0038 | min 0.8432 | max 0.8632
+   baseline accuracy : mean 0.8479
+   model beats the baseline in 91 of 100 splits, ties in 4, loses in 5
+   our fixed split (seed 42) gave 0.8479
+[saved] figures/25_repeated_holdout.png
+
+[saved] model/final_model.joblib
+
+Example - a new person: male, 61 years, 30 cigarettes/day, sysBP 150, glucose 103
+   probability of CHD within 10 years = 0.499  ->  prediction: No CHD

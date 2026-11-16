@@ -1,0 +1,52 @@
+
+====================================================================================================
+STEP 4b - ONE-HOT ENCODING OF education
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+
+--- CHD rate for each education level (train)
+           count  CHD rate
+education                 
+1.0000      1393    0.1874
+2.0000       980    0.1112
+3.0000       548    0.1387
+4.0000       387    0.1473
+
+The CHD rate does not fall in equal steps from level to level -> the 'numeric' assumption is
+only approximately true, so one-hot encoding is worth testing.
+
+--- Example: one person from each level, before and after One-Hot Encoding
+      education  education_1.0  education_2.0  education_3.0  education_4.0
+888      1.0000         1.0000         0.0000         0.0000         0.0000
+1767     2.0000         0.0000         1.0000         0.0000         0.0000
+1955     3.0000         0.0000         0.0000         1.0000         0.0000
+2344     4.0000         0.0000         0.0000         0.0000         1.0000
+  done: numeric (15 features)
+  done: one-hot (18 features)
+  done: one-hot, drop 1 (17 features)
+  done: without (14 features)
+[saved] results/step4b_onehot_encoding.csv
+
+--- CV accuracy for each encoding of education
+Model               n features  KNN (k=25)  Logistic Regression  Random Forest
+education encoding                                                            
+numeric                     15      0.8488               0.8557         0.8507
+one-hot                     18      0.8481               0.8555         0.8512
+one-hot, drop 1             17      0.8483               0.8556         0.8509
+without                     14      0.8488               0.8558         0.8515
+
+--- CV AUC
+Model               KNN (k=25)  Logistic Regression  Random Forest
+education encoding                                                
+numeric                 0.6683               0.7317         0.7176
+one-hot                 0.6596               0.7315         0.7183
+one-hot, drop 1         0.6632               0.7316         0.7189
+without                 0.6801               0.7326         0.7191
+[saved] figures/10b_onehot_encoding.png
+
+CONCLUSIONS
+- Logistic regression: numeric 0.8557 | one-hot 0.8555 | one-hot drop 1 0.8556 | without 0.8558
+- The differences are far below the CV standard deviation (about 0.005): education carries very little
+  information about CHD once age and blood pressure are known (step 5 also ranks it among the least useful).
+DECISION: keep education as a single numeric column. Step 5 (Lasso) removes it anyway.

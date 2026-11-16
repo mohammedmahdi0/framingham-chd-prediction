@@ -1,0 +1,51 @@
+
+====================================================================================================
+STEP 6c - DECISION-THRESHOLD TUNING
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+  Logistic Regression      acc@0.50 = 0.8549 | best threshold = 0.52 -> 0.8557 (gain +0.0008) | kept: 0.50
+  LDA                      acc@0.50 = 0.8553 | best threshold = 0.50 -> 0.8553 (gain +0.0000) | kept: 0.50
+  QDA                      acc@0.50 = 0.8488 | best threshold = 0.68 -> 0.8538 (gain +0.0050) | kept: 0.68
+  Naive Bayes              acc@0.50 = 0.8493 | best threshold = 0.39 -> 0.8515 (gain +0.0023) | kept: 0.39
+  KNN                      acc@0.50 = 0.8516 | best threshold = 0.48 -> 0.8516 (gain +0.0000) | kept: 0.50
+  Decision Tree            acc@0.50 = 0.8461 | best threshold = 0.64 -> 0.8483 (gain +0.0022) | kept: 0.64
+  Random Forest            acc@0.50 = 0.8523 | best threshold = 0.47 -> 0.8533 (gain +0.0010) | kept: 0.50
+  Extra Trees              acc@0.50 = 0.8519 | best threshold = 0.43 -> 0.8543 (gain +0.0024) | kept: 0.43
+  AdaBoost                 acc@0.50 = 0.8509 | best threshold = 0.48 -> 0.8512 (gain +0.0003) | kept: 0.50
+  Gradient Boosting        acc@0.50 = 0.8493 | best threshold = 0.58 -> 0.8508 (gain +0.0016) | kept: 0.58
+  Hist Gradient Boosting   acc@0.50 = 0.8518 | best threshold = 0.56 -> 0.8527 (gain +0.0009) | kept: 0.50
+  XGBoost                  acc@0.50 = 0.8514 | best threshold = 0.50 -> 0.8514 (gain +0.0000) | kept: 0.50
+  LightGBM                 acc@0.50 = 0.8512 | best threshold = 0.56 -> 0.8525 (gain +0.0013) | kept: 0.56
+  CatBoost                 acc@0.50 = 0.8525 | best threshold = 0.44 -> 0.8533 (gain +0.0008) | kept: 0.50
+  SVM (linear)             acc@0.50 = 0.8486 | best threshold = 0.52 -> 0.8487 (gain +0.0001) | kept: 0.50
+  SVM (RBF)                acc@0.50 = 0.8515 | best threshold = 0.37 -> 0.8528 (gain +0.0013) | kept: 0.37
+  Neural Network (MLP)     acc@0.50 = 0.8525 | best threshold = 0.56 -> 0.8545 (gain +0.0020) | kept: 0.56
+[saved] results/step6c_thresholds.json
+[saved] results/step6c_thresholds.csv
+
+--- Threshold tuning (out-of-fold, training set)
+                     Model  OOF acc @0.50  best threshold  OOF acc @best   gain  threshold kept
+0      Logistic Regression         0.8549          0.5200         0.8557 0.0008          0.5000
+1                      LDA         0.8553          0.5000         0.8553 0.0000          0.5000
+2     Neural Network (MLP)         0.8525          0.5600         0.8545 0.0020          0.5600
+3              Extra Trees         0.8519          0.4300         0.8543 0.0024          0.4300
+4                      QDA         0.8488          0.6800         0.8538 0.0050          0.6800
+5                 CatBoost         0.8525          0.4400         0.8533 0.0008          0.5000
+6            Random Forest         0.8523          0.4700         0.8533 0.0010          0.5000
+7                SVM (RBF)         0.8515          0.3700         0.8528 0.0013          0.3700
+8   Hist Gradient Boosting         0.8518          0.5600         0.8527 0.0009          0.5000
+9                 LightGBM         0.8512          0.5600         0.8525 0.0013          0.5600
+10                     KNN         0.8516          0.4800         0.8516 0.0000          0.5000
+11             Naive Bayes         0.8493          0.3900         0.8515 0.0023          0.3900
+12                 XGBoost         0.8514          0.5000         0.8514 0.0000          0.5000
+13                AdaBoost         0.8509          0.4800         0.8512 0.0003          0.5000
+14       Gradient Boosting         0.8493          0.5800         0.8508 0.0016          0.5800
+15            SVM (linear)         0.8486          0.5200         0.8487 0.0001          0.5000
+16           Decision Tree         0.8461          0.6400         0.8483 0.0022          0.6400
+[saved] figures/19_threshold_curves.png
+
+NOTE
+A low threshold labels many people as CHD (more false alarms); a high threshold labels almost nobody
+as CHD and the accuracy falls back to the baseline. The maximum sits close to 0.50, so the gain from
+threshold tuning is small.

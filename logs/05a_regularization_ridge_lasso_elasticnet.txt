@@ -1,0 +1,46 @@
+
+====================================================================================================
+STEP 5a - REGULARIZATION: RIDGE / LASSO / ELASTIC NET
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+[saved] figures/11_regularization_paths.png
+  All 15 features (no reduction)             features=    15  CV acc=0.8559 +/- 0.0050  AUC=0.7316
+
+Ridge (L2): best parameters = {'C': np.float64(0.046415888336127774)} | non-zero coefficients = 15
+  Ridge (L2)                                 features=    15  CV acc=0.8559 +/- 0.0053  AUC=0.7320
+
+Lasso (L1): best parameters = {'C': np.float64(0.1)} | non-zero coefficients = 10
+  Lasso (L1)                                 features=    10  CV acc=0.8559 +/- 0.0048  AUC=0.7333
+
+Elastic Net: best parameters = {'C': np.float64(0.046415888336127774), 'l1_ratio': 0.1} | non-zero coefficients = 11
+  Elastic Net                                features=    11  CV acc=0.8559 +/- 0.0046  AUC=0.7330
+[saved] results/step5a_regularization.csv
+[saved] results/step5a_selected.json
+
+--- Results
+                           Method          Family Features used  CV accuracy  CV acc std  CV AUC
+1                      Ridge (L2)  Regularization            15       0.8559      0.0053  0.7320
+2                      Lasso (L1)  Regularization            10       0.8559      0.0048  0.7333
+3                     Elastic Net  Regularization            11       0.8559      0.0046  0.7330
+0  All 15 features (no reduction)        Baseline            15       0.8559      0.0050  0.7316
+
+--- Coefficients at the best C (0 = feature removed)
+                 Ridge (L2)  Lasso (L1)  Elastic Net
+age                  0.5391      0.5510       0.5381
+sysBP                0.2962      0.3068       0.2987
+cigsPerDay           0.2817      0.2678       0.2717
+male                 0.2142      0.2008       0.2109
+glucose              0.1564      0.1520       0.1541
+totChol              0.0978      0.0752       0.0928
+prevalentStroke      0.0807      0.0701       0.0784
+prevalentHyp         0.0882      0.0670       0.0855
+BPMeds               0.0580      0.0468       0.0556
+diabetes             0.0267      0.0137       0.0246
+education           -0.0038      0.0000       0.0000
+currentSmoker       -0.0087      0.0000       0.0000
+diaBP                0.0052      0.0000       0.0000
+BMI                 -0.0026      0.0000       0.0000
+heartRate           -0.0124      0.0000      -0.0058
+
+Features removed by Lasso: ['education', 'currentSmoker', 'diaBP', 'BMI', 'heartRate']

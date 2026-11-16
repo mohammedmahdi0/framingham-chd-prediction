@@ -1,0 +1,58 @@
+
+====================================================================================================
+STEP 3 - DISTRIBUTIONS
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+[saved] figures/07_distributions.png
+[saved] figures/08_boxplots.png
+
+--- Shape of each continuous feature (train)
+            skewness  kurtosis  outliers (1.5 IQR)  outliers %      min      max
+glucose       6.1260   56.9962                 151      4.4543  40.0000 394.0000
+cigsPerDay    1.2300    0.9144                   8      0.2360   0.0000  70.0000
+sysBP         1.1537    2.2562                 100      2.9499  83.5000 295.0000
+BMI           1.0037    2.8154                  79      2.3304  15.5400  56.8000
+totChol       0.6827    1.9840                  45      1.3274 107.0000 600.0000
+diaBP         0.6692    1.0029                  62      1.8289  48.0000 136.0000
+heartRate     0.6278    0.9340                  60      1.7699  44.0000 143.0000
+age           0.2261   -0.9907                   0      0.0000  32.0000  70.0000
+[saved] results/step3_distribution_stats.csv
+
+Columns with skewness > 0.5: ['cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+  done: None
+  done: log(1+x) on skewed columns
+  done: Yeo-Johnson power transform
+  done: Quantile transform to normal
+  done: Winsorize (clip to 1st-99th percentile)
+  done: Winsorize + log(1+x)
+[saved] results/step3_distribution_transforms.csv
+
+--- CV accuracy after each transformation
+Model                                    KNN (k=25)  Logistic Regression
+Transformation                                                          
+None                                         0.8484               0.8559
+log(1+x) on skewed columns                   0.8482               0.8541
+Winsorize (clip to 1st-99th percentile)      0.8475               0.8537
+Winsorize + log(1+x)                         0.8475               0.8530
+Yeo-Johnson power transform                  0.8478               0.8523
+Quantile transform to normal                 0.8475               0.8519
+
+--- Skewness before / after (the transformations do fix the shape)
+              raw  log(1+x) on skewed columns  Yeo-Johnson power transform  Winsorize (clip to 1st-99th percentile)
+age        0.2261                      0.2261                      -0.0035                                   0.2239
+cigsPerDay 1.2300                      0.3250                       0.2325                                   1.1300
+totChol    0.6827                     -0.0270                       0.0009                                   0.3979
+sysBP      1.1537                      0.6095                       0.0139                                   0.9274
+diaBP      0.6692                      0.1775                      -0.0049                                   0.5600
+BMI        1.0037                      0.3401                      -0.0133                                   0.7119
+heartRate  0.6278                      0.1044                      -0.0019                                   0.5077
+glucose    6.1260                      2.3928                      -0.2551                                   2.6069
+[saved] figures/09_glucose_transforms.png
+
+CONCLUSIONS
+- glucose is extremely right-skewed; cigsPerDay, sysBP and BMI are moderately skewed.
+- The transformations fix the skew, but none of them beats "no transformation" for logistic regression
+  (best: None = 0.8559).
+- Reason: very high glucose / blood-pressure values are themselves a sign of disease. Flattening them removes signal.
+DECISION: keep the original distributions (no transformation).

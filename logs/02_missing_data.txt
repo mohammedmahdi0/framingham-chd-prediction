@@ -1,0 +1,63 @@
+
+====================================================================================================
+STEP 2 - MISSING DATA
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+
+--- Missing values per column
+            missing (train)  % (train)  missing (test)
+glucose                 320     9.4395              68
+education                82     2.4189              23
+BPMeds                   42     1.2389              11
+totChol                  35     1.0324              15
+cigsPerDay               23     0.6785               6
+BMI                      18     0.5310               1
+heartRate                 1     0.0295               0
+
+Training rows with at least one missing value: 476 of 3390 (14.0%)
+[saved] figures/05_missing.png
+
+--- Is missingness related to the target?
+            CHD rate when missing  CHD rate when present  n missing
+glucose                    0.1187                 0.1554   320.0000
+education                  0.1463                 0.1521    82.0000
+BPMeds                     0.2381                 0.1508    42.0000
+totChol                    0.2000                 0.1514    35.0000
+cigsPerDay                 0.0870                 0.1524    23.0000
+BMI                        0.5556                 0.1498    18.0000
+heartRate                  1.0000                 0.1517     1.0000
+  done: Logistic Regression  | Mean
+  done: Logistic Regression  | Median
+  done: Logistic Regression  | Most frequent
+  done: Logistic Regression  | Median (numeric) + mode (categorical)
+  done: Logistic Regression  | Median + missing-indicator columns
+  done: Logistic Regression  | KNN imputer (k=5)
+  done: Logistic Regression  | Iterative imputer (MICE)
+  done: Random Forest        | Mean
+  done: Random Forest        | Median
+  done: Random Forest        | Most frequent
+  done: Random Forest        | Median (numeric) + mode (categorical)
+  done: Random Forest        | Median + missing-indicator columns
+  done: Random Forest        | KNN imputer (k=5)
+  done: Random Forest        | Iterative imputer (MICE)
+[saved] results/step2_missing_data.csv
+
+--- CV accuracy of each missing-data strategy (repeated 5-fold, 15 fits)
+Model                                  Logistic Regression  Random Forest
+Strategy                                                                 
+Median                                              0.8559         0.8513
+Median + missing-indicator columns                  0.8558         0.8510
+Mean                                                0.8557         0.8517
+Median (numeric) + mode (categorical)               0.8557         0.8503
+Most frequent                                       0.8556         0.8511
+Iterative imputer (MICE)                            0.8556         0.8508
+KNN imputer (k=5)                                   0.8554         0.8502
+Drop incomplete rows                                0.8548         0.8507
+[saved] figures/06_missing_strategies.png
+
+CONCLUSIONS
+- Best strategy for logistic regression: Median (0.8559).
+- Dropping incomplete rows throws away 14% of the training data and is among the weakest options.
+- The differences are tiny (smaller than the CV standard deviation, about 0.005).
+DECISION: median imputation (simple, and the best or tied-best).

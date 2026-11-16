@@ -1,0 +1,67 @@
+
+====================================================================================================
+STEP 6b - HYPER-PARAMETER TUNING
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+  Logistic Regression      CV acc = 0.8547 +/- 0.0062  AUC = 0.7356  (9s)  {'feature_set': 'lasso10', 'l1_ratio': 0.5, 'C': 0.42813323987193913}
+  LDA                      CV acc = 0.8541 +/- 0.0059  AUC = 0.7325  (1s)  {'feature_set': 'bic5', 'shrinkage': 0.01}
+  QDA                      CV acc = 0.8486 +/- 0.0089  AUC = 0.7298  (1s)  {'feature_set': 'bic5', 'reg_param': 1.0}
+  Naive Bayes              CV acc = 0.8485 +/- 0.0049  AUC = 0.7292  (1s)  {'feature_set': 'bic5', 'var_smoothing': 1.0}
+  KNN                      CV acc = 0.8498 +/- 0.0033  AUC = 0.6850  (1s)  {'feature_set': 'bic5', 'weights': 'uniform', 'p': 1, 'n_neighbors': 21}
+  Decision Tree            CV acc = 0.8458 +/- 0.0057  AUC = 0.6770  (1s)  {'feature_set': 'bic5', 'min_samples_leaf': 50, 'max_depth': 8, 'criterion': 'entropy'}
+  Random Forest            CV acc = 0.8520 +/- 0.0045  AUC = 0.7093  (16s)  {'feature_set': 'bic5', 'n_estimators': 500, 'min_samples_leaf': 5, 'max_features': 0.3, 'max_depth': None}
+  Extra Trees              CV acc = 0.8514 +/- 0.0052  AUC = 0.7294  (10s)  {'feature_set': 'lasso10', 'n_estimators': 200, 'min_samples_leaf': 1, 'max_features': 0.5, 'max_depth': 8}
+  AdaBoost                 CV acc = 0.8507 +/- 0.0039  AUC = 0.7208  (10s)  {'feature_set': 'lasso10', 'n_estimators': 400, 'learning_rate': 0.5}
+  Gradient Boosting        CV acc = 0.8490 +/- 0.0055  AUC = 0.7138  (7s)  {'feature_set': 'all15', 'subsample': 1.0, 'n_estimators': 100, 'min_samples_leaf': 1, 'max_depth': 3, 'learning_rate': 0.05}
+  Hist Gradient Boosting   CV acc = 0.8503 +/- 0.0060  AUC = 0.7172  (2s)  {'feature_set': 'bic5', 'min_samples_leaf': 50, 'max_iter': 50, 'max_depth': 3, 'learning_rate': 0.1, 'l2_regularization': 0.0}
+  XGBoost                  CV acc = 0.8500 +/- 0.0029  AUC = 0.7188  (3s)  {'feature_set': 'all15', 'subsample': 0.85, 'reg_lambda': 5, 'n_estimators': 100, 'min_child_weight': 1, 'max_depth': 3, 'learning_rate': 0.05, 'colsample_bytree': 0.8}
+  LightGBM                 CV acc = 0.8502 +/- 0.0049  AUC = 0.7172  (1s)  {'feature_set': 'aic8', 'subsample': 1.0, 'reg_lambda': 10, 'num_leaves': 7, 'n_estimators': 200, 'min_child_samples': 20, 'learning_rate': 0.05, 'colsample_bytree': 0.6}
+  CatBoost                 CV acc = 0.8523 +/- 0.0047  AUC = 0.7271  (11s)  {'feature_set': 'bic5', 'learning_rate': 0.01, 'l2_leaf_reg': 3, 'iterations': 400, 'depth': 6}
+  SVM (linear)             CV acc = 0.8481 +/- 0.0000  AUC = 0.5933  (3s)  {'feature_set': 'all15', 'C': 0.001}
+  SVM (RBF)                CV acc = 0.8534 +/- 0.0045  AUC = 0.5881  (19s)  {'feature_set': 'bic5', 'gamma': 'scale', 'C': 10.0}
+  Neural Network (MLP)     CV acc = 0.8525 +/- 0.0074  AUC = 0.7307  (15s)  {'feature_set': 'aic8', 'learning_rate_init': 0.01, 'hidden_layer_sizes': (8,), 'early_stopping': False, 'alpha': 0.01}
+[saved] results/step6b_best_params.json
+[saved] results/step6b_tuned_models.csv
+
+--- Tuned models, best first
+                     Model Feature set  Search score  CV accuracy (fresh folds)  CV acc std  CV AUC  seconds
+1      Logistic Regression     lasso10        0.8560                     0.8547      0.0062  0.7356   9.4540
+2                      LDA        bic5        0.8546                     0.8541      0.0059  0.7325   0.5922
+3                SVM (RBF)        bic5        0.8540                     0.8534      0.0045  0.5881  18.8220
+4     Neural Network (MLP)        aic8        0.8563                     0.8525      0.0074  0.7307  14.8506
+5                 CatBoost        bic5        0.8546                     0.8523      0.0047  0.7271  11.0051
+6            Random Forest        bic5        0.8528                     0.8520      0.0045  0.7093  16.4415
+7              Extra Trees     lasso10        0.8531                     0.8514      0.0052  0.7294   9.5834
+8                 AdaBoost     lasso10        0.8519                     0.8507      0.0039  0.7208   9.9887
+9   Hist Gradient Boosting        bic5        0.8552                     0.8503      0.0060  0.7172   1.8905
+10                LightGBM        aic8        0.8546                     0.8502      0.0049  0.7172   1.3323
+11                 XGBoost       all15        0.8525                     0.8500      0.0029  0.7188   3.4603
+12                     KNN        bic5        0.8540                     0.8498      0.0033  0.6850   1.0665
+13       Gradient Boosting       all15        0.8540                     0.8490      0.0055  0.7138   6.8095
+14                     QDA        bic5        0.8490                     0.8486      0.0089  0.7298   0.5655
+15             Naive Bayes        bic5        0.8496                     0.8485      0.0049  0.7292   0.5985
+16            SVM (linear)       all15        0.8481                     0.8481      0.0000  0.5933   3.1948
+17           Decision Tree        bic5        0.8507                     0.8458      0.0057  0.6770   0.6151
+
+--- Tuned vs. default
+                        CV accuracy (fresh folds)  default (best feature set)  gain from tuning
+Model                                                                                          
+Logistic Regression                        0.8547                      0.8546            0.0001
+LDA                                        0.8541                      0.8541            0.0000
+SVM (RBF)                                  0.8534                      0.8508            0.0026
+Neural Network (MLP)                       0.8525                      0.8538           -0.0013
+CatBoost                                   0.8523                      0.8486            0.0037
+Random Forest                              0.8520                      0.8484            0.0036
+Extra Trees                                0.8514                      0.8488            0.0027
+AdaBoost                                   0.8507                      0.8514           -0.0007
+Hist Gradient Boosting                     0.8503                      0.8423            0.0081
+LightGBM                                   0.8502                      0.8421            0.0082
+XGBoost                                    0.8500                      0.8341            0.0159
+KNN                                        0.8498                      0.8382            0.0115
+Gradient Boosting                          0.8490                      0.8478            0.0012
+QDA                                        0.8486                      0.8422            0.0064
+Naive Bayes                                0.8485                      0.8416            0.0069
+SVM (linear)                               0.8481                      0.8481            0.0000
+Decision Tree                              0.8458                      0.7611            0.0848
+[saved] figures/18_models_tuned.png

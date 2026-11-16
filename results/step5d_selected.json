@@ -1,0 +1,60 @@
+{
+  "RFE (RFECV)": [
+    "male",
+    "age",
+    "currentSmoker",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "diaBP",
+    "BMI",
+    "heartRate",
+    "glucose"
+  ],
+  "ANOVA F-test (SelectKBest)": [
+    "male",
+    "age",
+    "education",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "diaBP",
+    "BMI",
+    "glucose"
+  ],
+  "Mutual information (SelectKBest)": [
+    "male",
+    "age",
+    "education",
+    "currentSmoker",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "diaBP",
+    "BMI",
+    "heartRate",
+    "glucose"
+  ],
+  "Random-Forest importance": [
+    "age",
+    "cigsPerDay",
+    "totChol",
+    "sysBP",
+    "diaBP",
+    "BMI",
+    "heartRate",
+    "glucose"
+  ]
+}

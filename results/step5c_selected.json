@@ -1,0 +1,36 @@
+{
+  "Stepwise forward AIC": [
+    "age",
+    "sysBP",
+    "cigsPerDay",
+    "glucose",
+    "male",
+    "prevalentStroke",
+    "totChol",
+    "BPMeds"
+  ],
+  "Stepwise backward AIC": [
+    "male",
+    "age",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "totChol",
+    "sysBP",
+    "glucose"
+  ],
+  "Stepwise forward BIC": [
+    "age",
+    "sysBP",
+    "cigsPerDay",
+    "glucose",
+    "male"
+  ],
+  "Stepwise backward BIC": [
+    "male",
+    "age",
+    "cigsPerDay",
+    "sysBP",
+    "glucose"
+  ]
+}

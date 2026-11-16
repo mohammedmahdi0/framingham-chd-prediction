@@ -1,0 +1,42 @@
+
+====================================================================================================
+STEP 6g - GRADIENT DESCENT, SGD AND NEWTON'S METHOD
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+Minimum of the cost function (scikit-learn reference): 0.374324
+
+--- Part A - the three optimizers written by hand, on the training set
+   Method (hand-written)  final cost  passes over the data  passes to get within 0.0001 of the minimum  max |weight - reference weight|  training accuracy  seconds
+0  Gradient Descent (GD)      0.3743                   300                                         103                           0.0027             0.8575   0.1132
+1    Stochastic GD (SGD)      0.3744                   300                                          12                           0.0192             0.8575   1.2867
+2        Newton's Method      0.3743                     5                                           3                           0.0000             0.8575   0.0057
+[saved] results/step6g_handwritten_optimizers.csv
+[saved] figures/21b_optimizers.png
+  lbfgs (quasi-Newton, default)        CV acc = 0.8559  iterations = 11
+  newton-cg (Newton)                   CV acc = 0.8558  iterations = 4
+  newton-cholesky (Newton)             CV acc = 0.8558  iterations = 4
+  sag (stochastic average gradient)    CV acc = 0.8558  iterations = 32
+  saga (stochastic)                    CV acc = 0.8558  iterations = 19
+  SGDClassifier (SGD, log-loss)        CV acc = 0.8478  iterations = 38
+[saved] results/step6g_sklearn_solvers.csv
+
+--- Part B - the same logistic regression trained by different scikit-learn solvers
+               Solver (scikit-learn)  CV accuracy  CV acc std  CV AUC  iterations  max |weight - reference weight|  fit seconds
+0      lbfgs (quasi-Newton, default)       0.8559      0.0050  0.7316          11                           0.0018       0.0220
+1                 newton-cg (Newton)       0.8558      0.0050  0.7317           4                           0.0013       0.0158
+2           newton-cholesky (Newton)       0.8558      0.0050  0.7317           4                           0.0002       0.0128
+3  sag (stochastic average gradient)       0.8558      0.0050  0.7317          32                           0.0000       0.0374
+4                  saga (stochastic)       0.8558      0.0050  0.7317          19                           0.0000       0.0229
+5      SGDClassifier (SGD, log-loss)       0.8478      0.0104  0.7126          38                           0.2159       0.0416
+
+CONCLUSIONS
+- Passes over the data needed to get within 0.0001 of the minimum cost:
+      Newton's Method 3  |  SGD 12  |  Gradient Descent 103
+  This is the lecture's point: Newton uses the curvature, so it needs far fewer steps.
+- SGD takes cheap, noisy steps: it gets near the minimum quickly but keeps wobbling around it
+  (its final weights are the furthest from the reference).
+- All scikit-learn solvers except SGDClassifier end at practically the same weights and the same accuracy
+  (0.8558 to 0.8559). The optimizer changes HOW FAST the model is trained,
+  not how good the trained model is.
+- SGDClassifier gives 0.8478: its noisy steps stop near the minimum, not at it.

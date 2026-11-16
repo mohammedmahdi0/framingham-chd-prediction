@@ -1,0 +1,13 @@
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Editor and OS files
+.vscode/
+.idea/
+.ipynb_checkpoints/
+Thumbs.db
+desktop.ini
+.DS_Store

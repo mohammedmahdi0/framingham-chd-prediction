@@ -1,0 +1,66 @@
+
+====================================================================================================
+STEP 6e - DECISION-TREE PRUNING
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+Unpruned tree: depth = 24, leaves = 497, training accuracy = 1.0000  <- it memorized the training set
+The pruning path has 185 possible alphas; 32 of them are tried.
+[saved] results/step6e_pruning_curve.csv
+
+--- Effect of post-pruning strength (ccp_alpha)
+    ccp_alpha  leaves  train accuracy  validation accuracy
+0      0.0000     497          1.0000               0.7501
+1      0.0002     479          1.0000               0.7501
+2      0.0003     456          0.9984               0.7510
+3      0.0003     446          0.9984               0.7510
+4      0.0003     416          0.9982               0.7513
+5      0.0003     408          0.9982               0.7513
+6      0.0003     396          0.9979               0.7514
+7      0.0003     376          0.9976               0.7517
+8      0.0003     370          0.9975               0.7517
+9      0.0004     325          0.9870               0.7596
+10     0.0004     310          0.9802               0.7678
+11     0.0004     300          0.9799               0.7681
+12     0.0004     266          0.9792               0.7687
+13     0.0004     253          0.9745               0.7735
+14     0.0005     221          0.9709               0.7747
+15     0.0005     195          0.9672               0.7767
+16     0.0005     186          0.9605               0.7776
+17     0.0005     175          0.9597               0.7780
+18     0.0005     166          0.9587               0.7790
+19     0.0005     149          0.9552               0.7820
+20     0.0006     123          0.9491               0.7853
+21     0.0006     105          0.9351               0.7923
+22     0.0007      84          0.9188               0.8071
+23     0.0007      72          0.9081               0.8150
+24     0.0008      51          0.8941               0.8249
+25     0.0009      36          0.8883               0.8274
+26     0.0010      24          0.8786               0.8323
+27     0.0013       9          0.8631               0.8405
+28     0.0020       5          0.8544               0.8442
+29     0.0030       3          0.8495               0.8458
+30     0.0050       3          0.8483               0.8477
+31     0.0051       2          0.8483               0.8477
+  1) No pruning                        train = 1.0000  CV = 0.7501  leaves = 497
+  2) Pre-pruning (depth, leaf size)    train = 0.8497  CV = 0.8481  leaves = 4
+  3) Post-pruning (ccp_alpha)          train = 0.8488  CV = 0.8478  leaves = 3
+  4) Pre + post pruning                train = 0.8499  CV = 0.8480  leaves = 4
+[saved] results/step6e_tree_pruning.csv
+
+--- Decision tree with and without pruning (baseline = 0.8481)
+                                Tree  Train accuracy  CV accuracy  CV acc std  CV AUC  depth  leaves                                            chosen settings
+0                      1) No pruning          1.0000       0.7501      0.0124  0.5416     24     497                                                          -
+1  2) Pre-pruning (depth, leaf size)          0.8497       0.8481      0.0022  0.6500      2       4                    {'max_depth': 2, 'min_samples_leaf': 1}
+2        3) Post-pruning (ccp_alpha)          0.8488       0.8478      0.0020  0.6459      2       3                           {'ccp_alpha': np.float64(0.005)}
+3              4) Pre + post pruning          0.8499       0.8480      0.0023  0.6502      2       4  {'ccp_alpha': 0.0, 'max_depth': 2, 'min_samples_leaf': 1}
+[saved] figures/20_tree_pruning.png
+[saved] figures/20b_pruned_tree.png
+
+CONCLUSIONS
+- Without pruning the tree has 497 leaves: train accuracy 1.0000 but CV accuracy only 0.7501
+  -> clear over-fitting, exactly as described in the lecture.
+- Pruning removes the over-fitting: the best variant (2) Pre-pruning (depth, leaf size)) has 4 leaves,
+  train 0.8497 and CV 0.8481 (+0.0979 over the unpruned tree).
+- Even the best pruned tree stays close to the baseline (0.8481) and below logistic regression,
+  so a single tree is not the final model. Pruning fixes over-fitting; it cannot add information.

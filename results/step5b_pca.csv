@@ -1,0 +1,4 @@
+Method,Family,Features used,CV accuracy,CV acc std,CV AUC
+PCA (2 components),Feature extraction,2 PCs,0.8489675516224188,0.0028396320704412335,0.6908400168847616
+PCA (13 components = 95% variance),Feature extraction,13 PCs,0.8537856440511308,0.006231260380631215,0.7322628394540593
+PCA (14 components = best k below 15),Feature extraction,14 PCs,0.8554572271386431,0.00484710227880679,0.7324271844660193

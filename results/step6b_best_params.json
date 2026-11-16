@@ -1,0 +1,213 @@
+{
+  "Logistic Regression": {
+    "params": {
+      "feature_set": "lasso10",
+      "l1_ratio": 0.5,
+      "C": 0.42813323987193913
+    },
+    "search_score": 0.856047197640118,
+    "cv_accuracy": 0.8546705998033433,
+    "cv_std": 0.006207942622483622,
+    "cv_auc": 0.7355812579147318
+  },
+  "LDA": {
+    "params": {
+      "feature_set": "bic5",
+      "shrinkage": 0.01
+    },
+    "search_score": 0.8545722713864305,
+    "cv_accuracy": 0.8540806293018683,
+    "cv_std": 0.005861891272679993,
+    "cv_auc": 0.7324924722104967
+  },
+  "QDA": {
+    "params": {
+      "feature_set": "bic5",
+      "reg_param": 1.0
+    },
+    "search_score": 0.8489675516224189,
+    "cv_accuracy": 0.8485742379547688,
+    "cv_std": 0.008925707546045394,
+    "cv_auc": 0.7297931616715914
+  },
+  "Naive Bayes": {
+    "params": {
+      "feature_set": "bic5",
+      "var_smoothing": 1.0
+    },
+    "search_score": 0.8495575221238937,
+    "cv_accuracy": 0.8484759095378566,
+    "cv_std": 0.004861045071507668,
+    "cv_auc": 0.7292089489235963
+  },
+  "KNN": {
+    "params": {
+      "feature_set": "bic5",
+      "weights": "uniform",
+      "p": 1,
+      "n_neighbors": 21
+    },
+    "search_score": 0.8539823008849557,
+    "cv_accuracy": 0.8497541789577187,
+    "cv_std": 0.0032700666958340027,
+    "cv_auc": 0.6850068946109469
+  },
+  "Decision Tree": {
+    "params": {
+      "feature_set": "bic5",
+      "min_samples_leaf": 50,
+      "max_depth": 8,
+      "criterion": "entropy"
+    },
+    "search_score": 0.8507374631268435,
+    "cv_accuracy": 0.8458210422812193,
+    "cv_std": 0.005746957402636162,
+    "cv_auc": 0.6770074574363303
+  },
+  "Random Forest": {
+    "params": {
+      "feature_set": "bic5",
+      "n_estimators": 500,
+      "min_samples_leaf": 5,
+      "max_features": 0.3,
+      "max_depth": null
+    },
+    "search_score": 0.8528023598820059,
+    "cv_accuracy": 0.8520157325467059,
+    "cv_std": 0.004495232822286124,
+    "cv_auc": 0.709342338539468
+  },
+  "Extra Trees": {
+    "params": {
+      "feature_set": "lasso10",
+      "n_estimators": 200,
+      "min_samples_leaf": 1,
+      "max_features": 0.5,
+      "max_depth": 8
+    },
+    "search_score": 0.8530973451327434,
+    "cv_accuracy": 0.8514257620452311,
+    "cv_std": 0.005206765897688781,
+    "cv_auc": 0.7293642887294216
+  },
+  "AdaBoost": {
+    "params": {
+      "feature_set": "lasso10",
+      "n_estimators": 400,
+      "learning_rate": 0.5
+    },
+    "search_score": 0.8519174041297936,
+    "cv_accuracy": 0.8507374631268436,
+    "cv_std": 0.0038536711784199367,
+    "cv_auc": 0.7208459265512874
+  },
+  "Gradient Boosting": {
+    "params": {
+      "feature_set": "all15",
+      "subsample": 1.0,
+      "n_estimators": 100,
+      "min_samples_leaf": 1,
+      "max_depth": 3,
+      "learning_rate": 0.05
+    },
+    "search_score": 0.8539823008849557,
+    "cv_accuracy": 0.8489675516224189,
+    "cv_std": 0.005460548034184771,
+    "cv_auc": 0.71378471929084
+  },
+  "Hist Gradient Boosting": {
+    "params": {
+      "feature_set": "bic5",
+      "min_samples_leaf": 50,
+      "max_iter": 50,
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "l2_regularization": 0.0
+    },
+    "search_score": 0.8551622418879056,
+    "cv_accuracy": 0.8503441494591937,
+    "cv_std": 0.006018148966804071,
+    "cv_auc": 0.7171971295905445
+  },
+  "XGBoost": {
+    "params": {
+      "feature_set": "all15",
+      "subsample": 0.85,
+      "reg_lambda": 5,
+      "n_estimators": 100,
+      "min_child_weight": 1,
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "colsample_bytree": 0.8
+    },
+    "search_score": 0.8525073746312686,
+    "cv_accuracy": 0.8500491642084563,
+    "cv_std": 0.0029334186608016297,
+    "cv_auc": 0.7187730406641339
+  },
+  "LightGBM": {
+    "params": {
+      "feature_set": "aic8",
+      "subsample": 1.0,
+      "reg_lambda": 10,
+      "num_leaves": 7,
+      "n_estimators": 200,
+      "min_child_samples": 20,
+      "learning_rate": 0.05,
+      "colsample_bytree": 0.6
+    },
+    "search_score": 0.8545722713864305,
+    "cv_accuracy": 0.8502458210422812,
+    "cv_std": 0.004932128300485535,
+    "cv_auc": 0.7172247080343325
+  },
+  "CatBoost": {
+    "params": {
+      "feature_set": "bic5",
+      "learning_rate": 0.01,
+      "l2_leaf_reg": 3,
+      "iterations": 400,
+      "depth": 6
+    },
+    "search_score": 0.8545722713864305,
+    "cv_accuracy": 0.8523107177974436,
+    "cv_std": 0.0046599786080915645,
+    "cv_auc": 0.7271186154495568
+  },
+  "SVM (linear)": {
+    "params": {
+      "feature_set": "all15",
+      "C": 0.001
+    },
+    "search_score": 0.8480825958702065,
+    "cv_accuracy": 0.8480825958702064,
+    "cv_std": 1.1102230246251565e-16,
+    "cv_auc": 0.5932697340650063
+  },
+  "SVM (RBF)": {
+    "params": {
+      "feature_set": "bic5",
+      "gamma": "scale",
+      "C": 10.0
+    },
+    "search_score": 0.8539823008849557,
+    "cv_accuracy": 0.8533923303834806,
+    "cv_std": 0.004467184539469245,
+    "cv_auc": 0.5881221331082033
+  },
+  "Neural Network (MLP)": {
+    "params": {
+      "feature_set": "aic8",
+      "learning_rate_init": 0.01,
+      "hidden_layer_sizes": [
+        8
+      ],
+      "early_stopping": false,
+      "alpha": 0.01
+    },
+    "search_score": 0.8563421828908554,
+    "cv_accuracy": 0.8525073746312686,
+    "cv_std": 0.007404071031275028,
+    "cv_auc": 0.7307218235542422
+  }
+}

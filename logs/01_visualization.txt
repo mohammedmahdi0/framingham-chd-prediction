@@ -1,0 +1,72 @@
+
+====================================================================================================
+STEP 1 - VISUALIZATION
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+Shape of the full data: (4238, 16)
+
+--- First rows
+   male  age  education  currentSmoker  cigsPerDay  BPMeds  prevalentStroke  prevalentHyp  diabetes  totChol    sysBP   diaBP     BMI  heartRate  glucose  TenYearCHD
+0     1   39     4.0000              0      0.0000  0.0000                0             0         0 195.0000 106.0000 70.0000 26.9700    80.0000  77.0000           0
+1     0   46     2.0000              0      0.0000  0.0000                0             0         0 250.0000 121.0000 81.0000 28.7300    95.0000  76.0000           0
+2     1   48     1.0000              1     20.0000  0.0000                0             0         0 245.0000 127.5000 80.0000 25.3400    75.0000  70.0000           0
+3     0   61     3.0000              1     30.0000  0.0000                0             1         0 225.0000 150.0000 95.0000 28.5800    65.0000 103.0000           1
+4     0   46     3.0000              1     23.0000  0.0000                0             0         0 285.0000 130.0000 84.0000 23.1000    85.0000  85.0000           0
+
+--- Summary statistics (train)
+                    count     mean     std      min      25%      50%      75%      max
+male            3390.0000   0.4322  0.4954   0.0000   0.0000   0.0000   1.0000   1.0000
+age             3390.0000  49.6260  8.5664  32.0000  42.0000  49.0000  56.0000  70.0000
+education       3308.0000   1.9785  1.0269   1.0000   1.0000   2.0000   3.0000   4.0000
+currentSmoker   3390.0000   0.4912  0.5000   0.0000   0.0000   0.0000   1.0000   1.0000
+cigsPerDay      3367.0000   9.0469 11.9762   0.0000   0.0000   0.0000  20.0000  70.0000
+BPMeds          3348.0000   0.0293  0.1686   0.0000   0.0000   0.0000   0.0000   1.0000
+prevalentStroke 3390.0000   0.0065  0.0803   0.0000   0.0000   0.0000   0.0000   1.0000
+prevalentHyp    3390.0000   0.3109  0.4629   0.0000   0.0000   0.0000   1.0000   1.0000
+diabetes        3390.0000   0.0265  0.1608   0.0000   0.0000   0.0000   0.0000   1.0000
+totChol         3355.0000 236.2554 44.1806 107.0000 205.0000 233.0000 262.0000 600.0000
+sysBP           3390.0000 132.3822 22.0029  83.5000 117.0000 128.0000 144.0000 295.0000
+diaBP           3390.0000  82.8307 11.8783  48.0000  74.5000  82.0000  89.5000 136.0000
+BMI             3372.0000  25.8173  4.1296  15.5400  23.0800  25.4000  28.0900  56.8000
+heartRate       3389.0000  75.9203 12.0185  44.0000  68.0000  75.0000  83.0000 143.0000
+glucose         3070.0000  81.9834 24.1440  40.0000  71.0000  78.0000  87.0000 394.0000
+TenYearCHD      3390.0000   0.1519  0.3590   0.0000   0.0000   0.0000   0.0000   1.0000
+
+Target: 3594 without CHD (84.8%) | 644 with CHD (15.2%)
+[saved] figures/01_target_and_age.png
+[saved] figures/02_continuous_by_target.png
+[saved] figures/03_categorical_by_target.png
+[saved] figures/04_correlation.png
+
+--- Correlation with the target
+                 correlation with TenYearCHD
+age                                   0.2375
+sysBP                                 0.2271
+prevalentHyp                          0.1809
+diaBP                                 0.1560
+glucose                               0.1281
+BPMeds                                0.0951
+totChol                               0.0946
+diabetes                              0.0937
+male                                  0.0804
+BMI                                   0.0720
+prevalentStroke                       0.0681
+cigsPerDay                            0.0666
+heartRate                             0.0313
+currentSmoker                         0.0198
+education                            -0.0494
+
+--- Strongly related feature pairs (|r| > 0.5) -> redundancy, the reason for step 5
+                          correlation
+sysBP         diaBP            0.7863
+currentSmoker cigsPerDay       0.7744
+prevalentHyp  sysBP            0.6971
+diabetes      glucose          0.6247
+prevalentHyp  diaBP            0.6188
+
+CONCLUSIONS
+- The target is imbalanced: about 15% positive. Always answering "no CHD" is already ~85% accurate.
+- Age and systolic blood pressure are the clearest signals.
+- Every correlation with the target is weak (max ~0.23): accuracy far above the baseline is not expected.
+- Several features duplicate each other (sysBP-diaBP, currentSmoker-cigsPerDay, glucose-diabetes).

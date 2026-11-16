@@ -1,0 +1,49 @@
+
+====================================================================================================
+STEP 5e - COMPARISON OF ALL DIMENSIONALITY-REDUCTION METHODS
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+[saved] results/step5_all_methods.csv
+
+--- All methods, best first (same classifier, same repeated 5-fold CV)
+                                   Method              Family Features used  CV accuracy  CV acc std  CV AUC
+1                              Ridge (L2)      Regularization            15       0.8559      0.0053  0.7320
+2                              Lasso (L1)      Regularization            10       0.8559      0.0048  0.7333
+3                             Elastic Net      Regularization            11       0.8559      0.0046  0.7330
+4          All 15 features (no reduction)            Baseline            15       0.8559      0.0050  0.7316
+5   PCA (14 components = best k below 15)  Feature extraction        14 PCs       0.8555      0.0048  0.7324
+6              ANOVA F-test (SelectKBest)   Feature selection            13       0.8547      0.0052  0.7336
+7                    Stepwise forward AIC   Feature selection             8       0.8546      0.0050  0.7334
+8                   Stepwise backward AIC   Feature selection             8       0.8546      0.0050  0.7334
+9                Random-Forest importance   Feature selection             8       0.8543      0.0041  0.7275
+10       Mutual information (SelectKBest)   Feature selection            15       0.8542      0.0050  0.7291
+11                   Stepwise forward BIC   Feature selection             5       0.8541      0.0040  0.7331
+12                  Stepwise backward BIC   Feature selection             5       0.8541      0.0040  0.7331
+13                            RFE (RFECV)   Feature selection            14       0.8539      0.0046  0.7321
+14     PCA (13 components = 95% variance)  Feature extraction        13 PCs       0.8538      0.0062  0.7323
+15                     PCA (2 components)  Feature extraction         2 PCs       0.8490      0.0028  0.6908
+[saved] figures/15_reduction_comparison.png
+[saved] results/step5_selected_features.csv
+
+--- How many of the 11 methods keep each feature
+                age  cigsPerDay  sysBP  glucose  male  totChol  prevalentStroke  BPMeds  diabetes  prevalentHyp  diaBP  BMI  heartRate  currentSmoker  education
+times selected   11          11     11       11    10        9                8       8         6             6      5    5          5              3          3
+[saved] figures/16_selected_features.png
+
+--- Tied for first place (within 0.0005 of the best)
+                                  Method              Family Features used  CV accuracy  CV acc std  CV AUC
+1                             Ridge (L2)      Regularization            15       0.8559      0.0053  0.7320
+2                             Lasso (L1)      Regularization            10       0.8559      0.0048  0.7333
+3                            Elastic Net      Regularization            11       0.8559      0.0046  0.7330
+4         All 15 features (no reduction)            Baseline            15       0.8559      0.0050  0.7316
+5  PCA (14 components = best k below 15)  Feature extraction        14 PCs       0.8555      0.0048  0.7324
+
+CONCLUSIONS
+- 5 methods are tied for first place at about 0.8559.
+- Among them, Lasso (L1) uses the fewest features (10), so it is the preferred one.
+- All methods are within about 0.002 of each other, except PCA with few components.
+- Features kept by every method: ['age', 'cigsPerDay', 'sysBP', 'glucose']
+- Least useful features: ['currentSmoker', 'education']
+DECISION: regularization (Lasso / Elastic Net) is the preferred reduction method. The feature subsets
+'lasso10', 'aic8' and 'bic5' are stored in common.py and are tried with every model in step 6.

@@ -1,0 +1,44 @@
+{
+  "Ridge (L2)": [
+    "male",
+    "age",
+    "education",
+    "currentSmoker",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "diaBP",
+    "BMI",
+    "heartRate",
+    "glucose"
+  ],
+  "Lasso (L1)": [
+    "male",
+    "age",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "glucose"
+  ],
+  "Elastic Net": [
+    "male",
+    "age",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "heartRate",
+    "glucose"
+  ]
+}

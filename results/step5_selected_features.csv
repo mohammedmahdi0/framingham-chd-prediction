@@ -1,0 +1,16 @@
+,Ridge (L2),Lasso (L1),Elastic Net,Stepwise forward AIC,Stepwise backward AIC,Stepwise forward BIC,Stepwise backward BIC,RFE (RFECV),ANOVA F-test (SelectKBest),Mutual information (SelectKBest),Random-Forest importance,times selected
+age,1,1,1,1,1,1,1,1,1,1,1,11
+cigsPerDay,1,1,1,1,1,1,1,1,1,1,1,11
+sysBP,1,1,1,1,1,1,1,1,1,1,1,11
+glucose,1,1,1,1,1,1,1,1,1,1,1,11
+male,1,1,1,1,1,1,1,1,1,1,0,10
+totChol,1,1,1,1,1,0,0,1,1,1,1,9
+prevalentStroke,1,1,1,1,1,0,0,1,1,1,0,8
+BPMeds,1,1,1,1,1,0,0,1,1,1,0,8
+diabetes,1,1,1,0,0,0,0,1,1,1,0,6
+prevalentHyp,1,1,1,0,0,0,0,1,1,1,0,6
+diaBP,1,0,0,0,0,0,0,1,1,1,1,5
+BMI,1,0,0,0,0,0,0,1,1,1,1,5
+heartRate,1,0,1,0,0,0,0,1,0,1,1,5
+currentSmoker,1,0,0,0,0,0,0,1,0,1,0,3
+education,1,0,0,0,0,0,0,0,1,1,0,3

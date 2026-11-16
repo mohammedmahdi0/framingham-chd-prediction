@@ -1,0 +1,43 @@
+
+====================================================================================================
+STEP 4 - FEATURE SCALING
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+
+--- Raw feature ranges - very different scales
+                     min      max     mean     std
+male              0.0000   1.0000   0.4322  0.4954
+age              32.0000  70.0000  49.6260  8.5664
+education         1.0000   4.0000   1.9785  1.0269
+currentSmoker     0.0000   1.0000   0.4912  0.5000
+cigsPerDay        0.0000  70.0000   9.0469 11.9762
+BPMeds            0.0000   1.0000   0.0293  0.1686
+prevalentStroke   0.0000   1.0000   0.0065  0.0803
+prevalentHyp      0.0000   1.0000   0.3109  0.4629
+diabetes          0.0000   1.0000   0.0265  0.1608
+totChol         107.0000 600.0000 236.2554 44.1806
+sysBP            83.5000 295.0000 132.3822 22.0029
+diaBP            48.0000 136.0000  82.8307 11.8783
+BMI              15.5400  56.8000  25.8173  4.1296
+heartRate        44.0000 143.0000  75.9203 12.0185
+glucose          40.0000 394.0000  81.9834 24.1440
+  done: None
+  done: StandardScaler
+  done: MinMaxScaler
+  done: RobustScaler
+[saved] results/step4_scaling.csv
+
+--- CV accuracy by scaler and model
+Model           KNN (k=25)  Logistic Regression  Random Forest  SVM (RBF)
+Scaler                                                                   
+None                0.8486               0.8555         0.8504     0.8483
+StandardScaler      0.8484               0.8559         0.8506     0.8495
+MinMaxScaler        0.8484               0.8549         0.8505     0.8483
+RobustScaler        0.8490               0.8556         0.8505     0.8478
+[saved] figures/10_scaling.png
+
+CONCLUSIONS
+- StandardScaler is best (or tied) for logistic regression and SVM.
+- Random Forest gives the same accuracy with every scaler: tree models do not need scaling.
+DECISION: StandardScaler.

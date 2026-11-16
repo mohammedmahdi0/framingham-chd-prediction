@@ -1,0 +1,43 @@
+
+====================================================================================================
+STEP 5d - OTHER FEATURE-SELECTION METHODS
+====================================================================================================
+train = 3390 rows | test = 848 rows | baseline accuracy (always 'no CHD'): train 0.8481, test 0.8479
+
+  RFE (RFECV)                                features=    14  CV acc=0.8539 +/- 0.0046  AUC=0.7321
+  ANOVA F-test (SelectKBest)                 features=    13  CV acc=0.8547 +/- 0.0052  AUC=0.7336
+  Mutual information (SelectKBest)           features=    15  CV acc=0.8542 +/- 0.0050  AUC=0.7291
+  Random-Forest importance                   features=     8  CV acc=0.8543 +/- 0.0041  AUC=0.7275
+[saved] results/step5d_other_selection.csv
+[saved] results/step5d_selected.json
+
+--- Results
+                             Method             Family Features used  CV accuracy  CV acc std  CV AUC
+0                       RFE (RFECV)  Feature selection            14       0.8539      0.0046  0.7321
+1        ANOVA F-test (SelectKBest)  Feature selection            13       0.8547      0.0052  0.7336
+2  Mutual information (SelectKBest)  Feature selection            15       0.8542      0.0050  0.7291
+3          Random-Forest importance  Feature selection             8       0.8543      0.0041  0.7275
+
+--- Feature scores given by each method
+                 ANOVA F  mutual information  RF importance  RFE rank (1 = kept)
+age             202.5913              0.0277         0.1600                    1
+sysBP           184.2270              0.0236         0.1516                    1
+prevalentHyp    114.6045              0.0190         0.0264                    1
+diaBP            84.4895              0.0197         0.1170                    1
+glucose          53.2041              0.0101         0.1114                    1
+totChol          30.1323              0.0093         0.1075                    1
+BPMeds           30.0374              0.0065         0.0071                    1
+diabetes         30.0036              0.0076         0.0061                    1
+male             22.0226              0.0033         0.0238                    1
+BMI              17.0543              0.0059         0.1096                    1
+prevalentStroke  15.8048              0.0106         0.0035                    1
+cigsPerDay       15.3924              0.0023         0.0517                    1
+education         8.0837              0.0027         0.0327                    2
+heartRate         3.3017              0.0092         0.0800                    1
+currentSmoker     1.3316              0.0000         0.0117                    1
+[saved] results/step5d_feature_scores.csv
+[saved] figures/14_feature_scores.png
+RFE (RFECV): kept 14 -> ['male', 'age', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+ANOVA F-test (SelectKBest): kept 13 -> ['male', 'age', 'education', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'glucose']
+Mutual information (SelectKBest): kept 15 -> ['male', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+Random-Forest importance: kept 8 -> ['age', 'cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
